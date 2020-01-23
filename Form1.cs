@@ -27,6 +27,13 @@ namespace MusicalInstrument
             var player = new WaveOutEvent();
             player.Init(sine);
 
+            trackFrequency.ValueChanged += (s, e) => sine.Frequency = trackFrequency.Value;
+            trackFrequency.Value = 600;
+
+            trackVolume.ValueChanged += (s, e) => player.Volume = trackVolume.Value / 100F;
+            trackVolume.Value = 50;
+
+
             MouseDown += (s, e) => player.Play();
             MouseUp += (s, e) => player.Stop();
         }
