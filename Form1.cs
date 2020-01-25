@@ -61,17 +61,21 @@ namespace MusicalInstrument
         private void panel_MouseMove(object sender, MouseEventArgs e)
         {
             var dX = e.X - CursorPositionOnMouseDown.X;
-            //var vol =
+            var vol = player.Volume + (dX / 1000F);
 
             var dY = CursorPositionOnMouseDown.Y - e.Y;
-            //var freq = 
+            var freq = sine.Frequency + dY;
 
             if(ButtonIsDown)
             {
+                player.Volume = (vol > 0) ? (vol < 1) ? vol : 1 : 0;
+                sine.Frequency = (freq > 100) ? (freq < 1000) ? freq: 1000 : 100;
 
+                trackFrequency.Value = (int)Math.Round(sine.Frequency);
+                trackVolume.Value = (int)Math.Round(player.Volume * 100);
             }
 
-            Text = $"Musical Instrument! ({dX}, {dY}) (vol, freq)";
+            Text = $"Musical Instrument! ({dX}, {dY}) ({vol}, {freq})";
         }
     }
 }
