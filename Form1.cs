@@ -20,11 +20,14 @@ namespace MusicalInstrument
             Gain = 0.2,
             Frequency = 600
         };
+        
+        WaveOutEvent player = new WaveOutEvent();
+
         public Form1()
         {
             InitializeComponent();
 
-            var player = new WaveOutEvent();
+            
             player.Init(sine);
 
             trackFrequency.ValueChanged += (s, e) => sine.Frequency = trackFrequency.Value;
@@ -33,15 +36,21 @@ namespace MusicalInstrument
             trackVolume.ValueChanged += (s, e) => player.Volume = trackVolume.Value / 100F;
             trackVolume.Value = 50;
 
+        }
 
-            MouseDown += (s, e) => player.Play();
-            MouseUp += (s, e) => player.Stop();
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
 
-            trackFrequency.MouseDown += (s, e) => player.Play();
-            trackFrequency.MouseUp += (s, e) => player.Stop();
+        }
 
-            trackVolume.MouseDown += (s, e) => player.Play();
-            trackVolume.MouseUp += (s, e) => player.Stop();
+        private void TheMouseDown(object sender, MouseEventArgs e)
+        {
+            player.Play();
+        }
+
+        private void TheMouseUp(object sender, MouseEventArgs e)
+        {
+            player.Stop();
         }
     }
 }
