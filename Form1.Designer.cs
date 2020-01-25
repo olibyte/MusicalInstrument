@@ -70,6 +70,7 @@
             this.panel.TabIndex = 2;
             this.panel.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             this.panel.MouseDown += new System.Windows.Forms.MouseEventHandler(this.TheMouseDown);
+            this.panel.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panel_MouseMove);
             this.panel.MouseUp += new System.Windows.Forms.MouseEventHandler(this.TheMouseUp);
             // 
             // Form1
