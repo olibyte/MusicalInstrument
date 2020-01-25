@@ -36,6 +36,12 @@ namespace MusicalInstrument
 
             MouseDown += (s, e) => player.Play();
             MouseUp += (s, e) => player.Stop();
+
+            trackFrequency.MouseDown += (s, e) => player.Play();
+            trackFrequency.MouseUp += (s, e) => player.Stop();
+
+            trackVolume.MouseDown += (s, e) => player.Play();
+            trackVolume.MouseUp += (s, e) => player.Stop();
         }
     }
 }
